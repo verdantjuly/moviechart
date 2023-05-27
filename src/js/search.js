@@ -11,11 +11,14 @@ function search() {
         .then(response => response.json())
         .then(data => {
 
-            let searchString = document.querySelector("#search").value
             let rows = data['results']
             document.getElementById("cards").innerHTML = ""
             rows.forEach((a) => {
+                let searchString = document.querySelector("#search").value
+                let upperSearch = searchString.toUpperCase()
+                console.log(upperSearch)
                 let title = a['title']
+                let uppperTitle = title.toUpperCase()
                 let poster_path = "https://image.tmdb.org/t/p/w300" + a['poster_path']
                 let overview = a['overview']
                 let vote_average = a['vote_average']
@@ -26,12 +29,12 @@ function search() {
                     <img src="${poster_path}"
                         class="poster_path">
                                 <div class="card-body">
-                                    <h4 class="title">${title}</h4>
+                                    <h4 class="cardtitle">${title}</h4>
                                     <p class = "vote_average">★ ${vote_average}</p>
                                     <p class="overview">${overview}</p>
                             </div>
                     </div>`
-                if(searchString == title){
+                if(upperSearch == uppperTitle){
                 document.getElementById("cards").insertAdjacentHTML('beforeend', temp);
             }
             })

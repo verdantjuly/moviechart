@@ -1,23 +1,58 @@
-.card-body{
+.card-body {
     padding: 0px 18px 0px 18px;
 }
-.overview{
+.cardtitle{
+    font-size: 20px;
+}
+.overview {
     font-size: 15px;
     font-style: italic;
 }
-.vote_average{
+
+.vote_average {
     font-size: 15px;
 }
-.card{
+
+.card {
     width: 300px;
-    margin: 0px 4px 6px 4px;
+    margin: 0px 8px 6px 8px;
     
+
 }
-.cards{
-    display:inline-flex;
+
+.cards {
+    display: inline-flex;
     align-content: flex-start;
     flex-wrap: wrap;
+    justify-content: center;
 }
-.poster_path{
+
+.poster_path {
     border-radius: 10%;
+}
+
+.title {
+    font-size: 30px;
+    font-style: italic;
+    margin: 0px auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+#search{
+    font-size: 20px;;
+    width: 300px;
+    height: 50px;
+    outline-color: rgba(216, 216, 216, 0.902);
+}
+
+#searchbtn {
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    width: 100px;
+    height: 50px;
+    border-radius: 5%;
 }

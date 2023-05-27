@@ -1,5 +1,4 @@
 function load() {
-
     const options = {
         method: 'GET',
         headers: {
@@ -18,14 +17,14 @@ function load() {
                 let poster_path = "https://image.tmdb.org/t/p/w300" + a['poster_path']
                 let overview = a['overview']
                 let vote_average = a['vote_average']
-                
+
                 let temp =
 
                     `<div class="card" onclick = alert(${id})>
                     <img src="${poster_path}"
                         class="poster_path">
                                 <div class="card-body">
-                                    <h4 class="title">${title}</h4>
+                                    <h4 class="cardtitle">${title}</h4>
                                     <p class = "vote_average">★ ${vote_average}</p>
                                     <p class="overview">${overview}</p>
                             </div>
@@ -36,5 +35,10 @@ function load() {
 
         }
         )
-
+    document.getElementById("search")
+        .addEventListener("keyup", function (e) {
+            if (e.code === 'Enter') {
+                document.getElementById("searchbtn").click();
+            }
+        });
 };
