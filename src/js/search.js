@@ -15,10 +15,19 @@ function search() {
             document.getElementById("cards").innerHTML = ""
             let searchString = document.querySelector("#search").value
             let upperSearch = searchString.toUpperCase()
-
-            if (searchString == false) {
-                alert("검색어를 입력하세요!")
+            let noarray = []
+            for (i = 0; i < rows.length; i++) {
+                noarray.push(rows[i]['title'].toUpperCase())
             }
+            let filteredtitlearray = noarray.filter(function (item) {
+                return item.includes(upperSearch)
+            })
+            if(filteredtitlearray.length==0){
+                alert("찾으시는 영화가 없습니다!")
+            }
+            if (searchString == false) {
+                    alert("검색어를 입력하세요!")
+                }
             rows.forEach((a) => {
                 let title = a['title']
                 let uppperTitle = title.toUpperCase()
@@ -26,8 +35,8 @@ function search() {
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 let id = a['id']
-                let temp =
 
+                let temp =
                     `<div class="card" onclick = alert(${id})>
                     <img src="${poster_path}"
                         class="poster_path">
@@ -39,8 +48,6 @@ function search() {
                     </div>`
                 if (uppperTitle.includes(upperSearch)) {
                     document.getElementById("cards").insertAdjacentHTML('beforeend', temp);
-
-
                 }
             })
 

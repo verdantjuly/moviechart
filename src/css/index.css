@@ -56,3 +56,8 @@
     height: 50px;
     border-radius: 5%;
 }
+.rank{
+    font-size: 40px;
+    font-weight: 900;
+    font-style: italic;
+}
