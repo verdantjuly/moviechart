@@ -34,7 +34,7 @@ function search() {
                                     <p class="overview">${overview}</p>
                             </div>
                     </div>`
-                if(upperSearch == uppperTitle){
+                if(uppperTitle.includes(upperSearch)){
                 document.getElementById("cards").insertAdjacentHTML('beforeend', temp);
             }
             })
