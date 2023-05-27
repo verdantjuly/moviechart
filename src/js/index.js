@@ -17,10 +17,11 @@ function load() {
                 let poster_path = "https://image.tmdb.org/t/p/w300" + a['poster_path']
                 let overview = a['overview']
                 let vote_average = a['vote_average']
+        
 
                 let temp =
 
-                    `<div class="card" onclick = alert(${id})>
+                    `<div class="card" onclick = alert("${id}")>
                     <img src="${poster_path}"
                         class="poster_path">
                                 <div class="card-body">

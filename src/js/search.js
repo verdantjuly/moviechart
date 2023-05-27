@@ -6,17 +6,20 @@ function search() {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MTE5ZjU0OTI3NWEyM2VjNjViNTRkZmQ2MTUyYTA4NiIsInN1YiI6IjY0NzA4YTllNzcwNzAwMDBhOTQ3ZDdmMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3W-E9KnuKEWvia4zXrXpCRKfHz9a5clH7RjrUwJD8iY'
         }
     };
-    
+
     fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
         .then(response => response.json())
         .then(data => {
 
             let rows = data['results']
             document.getElementById("cards").innerHTML = ""
+            let searchString = document.querySelector("#search").value
+            let upperSearch = searchString.toUpperCase()
+
+            if (searchString == false) {
+                alert("검색어를 입력하세요!")
+            }
             rows.forEach((a) => {
-                let searchString = document.querySelector("#search").value
-                let upperSearch = searchString.toUpperCase()
-                console.log(upperSearch)
                 let title = a['title']
                 let uppperTitle = title.toUpperCase()
                 let poster_path = "https://image.tmdb.org/t/p/w300" + a['poster_path']
@@ -34,10 +37,13 @@ function search() {
                                     <p class="overview">${overview}</p>
                             </div>
                     </div>`
-                if(uppperTitle.includes(upperSearch)){
-                document.getElementById("cards").insertAdjacentHTML('beforeend', temp);
-            }
+                if (uppperTitle.includes(upperSearch)) {
+                    document.getElementById("cards").insertAdjacentHTML('beforeend', temp);
+
+
+                }
             })
+
 
         }
         )
