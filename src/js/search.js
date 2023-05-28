@@ -16,7 +16,6 @@ function search() {
             let searchString = document.querySelector("#search").value
             let upperSearch = searchString.toUpperCase()
             let noarray = []
-            let rankarray = []
             for (i = 0; i < rows.length; i++) {
                 noarray.push(rows[i]['title'].toUpperCase())
             }
@@ -37,15 +36,12 @@ function search() {
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 let id = a['id']
-                rankarray.push(id)
-                let rank = rankarray.indexOf(id) +1
 
                 let temp =
                     `<div class="card" onclick = 'alert("영화 ID : ${id}")'>
                     <img src="${poster_path}"
                         class="poster_path">
                                 <div class="card-body">
-                                    <p class = "rank"> ${rank} </p>
                                     <h4 class="cardtitle">${title}</h4>
                                     <p class = "vote_average">★ ${vote_average}</p>
                                     <p class="overview">${overview}</p>

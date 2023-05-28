@@ -1,24 +1,29 @@
 <head>
     <meta charset="utf-8">
 
-  <link rel="stylesheet" type="text/css" href = "src/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/index.css" />
     <title>인기 영화 검색 | node.js A-8 이다영</title>
 
 </head>
+
 <body onload="load()">
     <div class="title">
         <h1 onclick="load()">Moviechart</h1>
         <div class="search">
-            <input type="search" class = "item" id="search" placeholder="제목으로 검색하기" autocomplete="off" autofocus>
-            <button class = "item" id ="searchbtn" onclick="search()" type="button"> 영화 검색</button>
+            <input type="search"  id="search" placeholder="search by title" autocomplete="off" autofocus>
+            <button  id="searchbtn" onclick="search()" type="button">Search</button>
+        </div>
+        <div class="chart">
+            <button  id="chartbtn" onclick="load()" type="button">all chart</button>
+            <button  id="chartbtn" onclick="anime()" type="button">animation chart</button>
         </div>
     </div>
-    <div class = "cards" id = "cards">
+    <div class="cards" id="cards">
 
     </div>
     <script type="text/javascript" src="src/js/index.js"></script>
     <script type="text/javascript" src="src/js/search.js"></script>
     <script type="text/javascript" src="src/js/rate.js"></script>
-   
+
 
 </body>
