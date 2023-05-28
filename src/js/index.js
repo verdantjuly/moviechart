@@ -21,11 +21,11 @@ function load() {
                 let vote_average = a['vote_average']
                 rankarray.push(id)
                 let rank = rankarray.indexOf(id) +1
+                let message = `영화 ID: ${id}`;
                 
                 let temp =
 
-                    `<div class="card" onclick = alert("영화ㅤIDㅤ:ㅤ${id}")>
-                   
+                    `<div class="card" onclick = 'alert("영화 ID : ${id}")' >
                     <img src="${poster_path}"
                         class="poster_path">
                                 <div class="card-body">
