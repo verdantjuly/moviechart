@@ -11,8 +11,8 @@ function load() {
         .then(response => response.json())
         .then(data => {
             let rows = data['results']
-            console.log(rows)
             let rankarray = []
+            document.getElementById("cards").innerHTML = ""
             rows.forEach((a) => {
                 let id = a['id']
                 let title = a['title']
@@ -35,7 +35,9 @@ function load() {
                                     <p class="overview">${overview}</p>
                             </div>
                     </div>`
+                    
                 document.getElementById("cards").insertAdjacentHTML('beforeend', temp);
+                
 
             })
 
