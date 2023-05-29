@@ -1,7 +1,8 @@
 <head>
     <meta charset="utf-8">
-
-    <link rel="stylesheet" type="text/css" href="src/css/index.css" />
+    <div id=cssline>
+        <link rel="stylesheet" type="text/css" href="src/css/index.css" />
+    </div>
     <title>인기 영화 검색 | node.js A-8 이다영</title>
 
 </head>
@@ -9,21 +10,28 @@
 <body onload="load()">
     <div class="title">
         <h1 onclick="load()">Moviechart</h1>
+        <div class=mobile>
+            <button id="mobilebtn" onclick="mobileSwitch()" type="button">mobile</button>
+            <button id="desktopbtn" onclick="desktopSwitch()" type="button">desktop</button>
+        </div>
         <div class="search">
-            <input type="search"  id="search" placeholder="search by title" autocomplete="off" autofocus>
-            <button  id="searchbtn" onclick="search()" type="button">Search</button>
+            <input type="search" id="search" placeholder="search by title" autocomplete="off" autofocus>
+            <button id="searchbtn" onclick="search()" type="button">Search</button>
         </div>
         <div class="chart">
-            <button  id="chartbtn" onclick="load()" type="button">all chart</button>
-            <button  id="chartbtn" onclick="anime()" type="button">animation chart</button>
+            <button id="chartbtn" onclick="load()" type="button">all chart</button>
+            <button id="chartbtn" onclick="anime()" type="button">animation chart</button>
         </div>
     </div>
+
     <div class="cards" id="cards">
 
     </div>
     <script type="text/javascript" src="src/js/index.js"></script>
     <script type="text/javascript" src="src/js/search.js"></script>
     <script type="text/javascript" src="src/js/rate.js"></script>
+    <script type="text/javascript" src="src/js/mobileSwitch.js"></script>
+
 
 
 </body>

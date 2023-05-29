@@ -1,4 +1,5 @@
 function load() {
+    
     const options = {
         method: 'GET',
         headers: {
@@ -97,3 +98,4 @@ function anime() {
         )
 
 }
+
