@@ -2,21 +2,20 @@
     padding: 0px 18px 0px 18px;
 }
 .cardtitle{
-    font-size: 20px;
+    font-size: 40px;
 }
 .overview {
-    font-size: 15px;
+    font-size: 30px;
     font-style: italic;
 }
 
 .vote_average {
-    font-size: 15px;
+    font-size: 30px;
 }
 
 .card {
-    width: 300px;
+    width: 500px;
     margin: 0px 8px 6px 8px;
-    
 
 }
 
@@ -53,7 +52,7 @@
     margin-left: 10px;
 }
 .rank{
-    font-size: 40px;
+    font-size: 80px;
     font-weight: 900;
     font-style: italic;
 }

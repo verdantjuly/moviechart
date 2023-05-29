@@ -17,7 +17,7 @@ function load() {
             rows.forEach((a) => {
                 let id = a['id']
                 let title = a['title']
-                let poster_path = "https://image.tmdb.org/t/p/w300" + a['poster_path']
+                let poster_path = "https://image.tmdb.org/t/p/w500" + a['poster_path']
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 rankarray.push(id)
@@ -69,7 +69,7 @@ function anime() {
             rows.forEach((a) => {
                 let id = a['id']
                 let title = a['title']
-                let poster_path = "https://image.tmdb.org/t/p/w300" + a['poster_path']
+                let poster_path = "https://image.tmdb.org/t/p/w500" + a['poster_path']
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 let genre = a['genre_ids']

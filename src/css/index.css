@@ -29,6 +29,7 @@
 
 .poster_path {
     border-radius: 10%;
+    width: 300px;
 }
 
 .title {

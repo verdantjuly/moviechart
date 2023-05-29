@@ -32,7 +32,7 @@ function search() {
             rows.forEach((a) => {
                 let title = a['title']
                 let uppperTitle = title.toUpperCase()
-                let poster_path = "https://image.tmdb.org/t/p/w300" + a['poster_path']
+                let poster_path = "https://image.tmdb.org/t/p/w500" + a['poster_path']
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 let id = a['id']
