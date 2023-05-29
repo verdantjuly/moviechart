@@ -65,8 +65,7 @@
     grid-template-columns: 250px 100px;
     margin-top: 20px;
   }
-
-  #chartbtn{
+#chartbtn{
     width: 180px;
     height: 40px;
     font-size: 20px;
@@ -78,13 +77,12 @@
     border-radius: 10%;
 
   }
-  #mobilebtn{
+#mobilebtn{
     width: 100px;
     height: 30px;
     border : none;
   }
-  
-  #desktopbtn{
+#desktopbtn{
     width: 100px;
     height: 30px;
     border : none;
