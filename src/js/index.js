@@ -1,5 +1,6 @@
+let m = new Map()
 function load() {
-    
+
     const options = {
         method: 'GET',
         headers: {
@@ -22,10 +23,14 @@ function load() {
                 let vote_average = a['vote_average']
                 rankarray.push(id)
                 let rank = rankarray.indexOf(id) + 1
-
+                let love = m.get(id)
+                if (!love) { love = 0 }  
                 let temp =
 
-                    `<div class="card" onclick = 'alert("영화 ID : ${id}")' >
+                    ` <div class = "card">
+                    <button id="lovebtn" onclick="love(${id})" type="button">♥︎</button>
+                <p class="love">${love} times loved this movie</love>
+                    <div class="card-body" onclick = 'alert("영화 ID : ${id}")' >
                     <img src="${poster_path}"
                         class="poster_path">
                                 <div class="card-body">
@@ -37,8 +42,6 @@ function load() {
                     </div>`
 
                 document.getElementById("cards").insertAdjacentHTML('beforeend', temp);
-
-
             })
 
         }
@@ -49,6 +52,7 @@ function load() {
                 document.getElementById("searchbtn").click();
             }
         });
+
 };
 
 function anime() {
@@ -73,12 +77,12 @@ function anime() {
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 let genre = a['genre_ids']
-                if (genre.includes(16)) {rankarray.push(id)}
+                if (genre.includes(16)) { rankarray.push(id) }
                 let rank = rankarray.indexOf(id) + 1
-
                 let temp =
 
-                    `<div class="card" onclick = 'alert("영화 ID : ${id}")' >
+                    ` <div class = "card">
+                    <div class="card-body" onclick = 'alert("영화 ID : ${id}")' >
                         <img src="${poster_path}"
                             class="poster_path">
                                     <div class="card-body">
