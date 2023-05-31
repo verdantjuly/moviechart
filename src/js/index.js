@@ -16,19 +16,18 @@ function load() {
         .then(response => response.json())
         .then(data => {
             let rows = data['results']
-            rank = 0
             document.getElementById("cards").innerHTML = ""
             rows.forEach((a) => {
-    
+
                 let id = a['id']
                 let title = a['title']
                 let poster_path = "https://image.tmdb.org/t/p/w500" + a['poster_path']
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 rankarray.push(id)
-                rank = rankarray.indexOf(id) +1
+                rank = rankarray.indexOf(id) + 1
                 let love = m.get(id)
-                if (!love){love = 0}
+                if (!love) { love = 0 }
                 let temp =
                     ` <div class = "card">
                     <button id="lovebtn" onclick="love(${id}),load()" type="button">♥︎</button>
@@ -49,7 +48,7 @@ function load() {
 
         }
         )
-  
+
 
 };
 
@@ -69,7 +68,7 @@ function anime() {
             let rows = data['results']
             rank = 0
             document.getElementById("cards").innerHTML = ""
-            rankarray =[]
+            rankarray = []
             rows.forEach((a) => {
                 let id = a['id']
                 let title = a['title']
@@ -78,9 +77,9 @@ function anime() {
                 let vote_average = a['vote_average']
                 let genre = a['genre_ids']
                 if (genre.includes(16)) { rankarray.push(id) }
-                rank = rankarray.indexOf(id) +1
+                rank = rankarray.indexOf(id) + 1
                 let love = m.get(id)
-                if (!love){love = 0}
+                if (!love) { love = 0 }
                 let temp =
 
                     ` <div class = "card">
@@ -120,24 +119,29 @@ function mychart() {
     fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
         .then(response => response.json())
         .then(data => {
-            let rows = data['results']
             document.getElementById("cards").innerHTML = ""
-            rankarray =[]
+            let rows = data['results']
+            sortm = [...m.entries()].sort((a, b) => b[1] - a[1])
+
+            for (i = 0; i < sortm.length; i++) {
+                rows[i].love = m.get(rows[i].id)
+            }
+            rows.sort((b, a) => a.love - b.love)
+            rankarray = []
             rows.forEach((a) => {
-                rankarray = []
+                
                 let id = a['id']
                 let title = a['title']
                 let poster_path = "https://image.tmdb.org/t/p/w500" + a['poster_path']
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 let love = m.get(id)
-                if (!love){love = 0}
+                rankarray.push(id)
+                rank = rankarray.indexOf(id) + 1
+                if (!love) { love = 0 }
 
-                sortm = [...m.entries()].sort((a, b) => b[1] - a[1]  )
-                for(i=0;i<sortm.length;i++){
-                rankarray.push(sortm[i][0])}
-                rank = rankarray.indexOf(id) +1
-                
+
+
                 let temp =
                     ` <div class = "card">
                     <button id="lovebtn" onclick="love(${id}),mychart()" type="button">♥︎</button>
@@ -152,13 +156,12 @@ function mychart() {
                                     <p class="overview">${overview}</p>
                             </div>
                     </div>`
-             
-                if(love>0)
-                {document.getElementById("cards").insertAdjacentHTML('beforeend', temp)}
+
+                if (love > 0) { document.getElementById("cards").insertAdjacentHTML('beforeend', temp) }
             })
 
         }
         )
-  
+
 
 };
