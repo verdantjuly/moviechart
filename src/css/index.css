@@ -1,14 +1,20 @@
+/* desktop용 css */
+/* 카드 본문 */
 .card-body {
+     /* 안쪽에 여백을 준다. 시계방향으로 위 오른쪽 아래 왼쪽 순서이다. */
     padding: 0px 18px 0px 18px;
+   
 }
 
+ /* 카드제목 */
 .cardtitle {
-    font-size: 20px;
+    font-size: 20px; /* 폰트 사이즈, 글씨 크기 */
 }
 
+/* 줄거리 */
 .overview {
-    font-size: 15px;
-    font-style: italic;
+    font-size: 15px; 
+    font-style: italic; /* 이탤릭체 */
 }
 
 .vote_average {
@@ -16,19 +22,18 @@
 }
 
 .card {
-    width: 300px;
-    margin: 0px 8px 6px 8px;
+    width: 300px;/* 넓이 */
+    margin: 0px 8px 56px 8px; /* 바깥 여백, 시계방향 */
 }
 
 .cards {
-    display: inline-flex;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: flex; /* 창의 크기에 따라 자동 정렬, 한 방향 레이아웃 시스템 */
+    align-content: flex-start; /* 수평방향으로 앞쪽에서 부터 정렬 */
+    flex-wrap: wrap; /* 자동 줄바꿈 */
+    justify-content: center; /* 가로축 : 중앙 */
 }
-
 .poster_path {
-    border-radius: 10%;
+    border-radius: 10%; /* 모서리 둥글게 */
     width: 300px;
 }
 
@@ -45,7 +50,7 @@
 
 #search {
     font-size: 15px;
-    outline-color: rgba(216, 216, 216, 0.902);
+    outline-color: rgba(216, 216, 216, 0.902); /* 바깥 선 색 */
 }
 
 #searchbtn {
@@ -65,14 +70,14 @@
 
 .rank {
     font-size: 40px;
-    font-weight: 900;
+    font-weight: 900; /* 폰트 굵기 */
     font-style: italic;
 }
 
 .search {
-    display: grid;
-    grid-template-rows: 50px 50px;
-    grid-template-columns: 250px 100px;
+    display: grid; /* 그리드 방식 : 두 방향(가로-세로) 레이아웃 시스템 */
+    grid-template-rows: 50px 50px; /* 행의 배치 */
+    grid-template-columns: 250px 100px; /* 열의 배치 */
     margin-top: 20px;
 }
 
@@ -89,8 +94,8 @@
 
 }
 
-#chartbtn:focus,
-#chartbtn:hover {
+#chartbtn:focus, /* focus 클릭 되었을 때 */
+#chartbtn:hover { /* hover 커서를 가져다 댔을 때 */
     width: 180px;
     height: 40px;
     font-size: 20px;
@@ -140,5 +145,6 @@
 
 .love{
     font-style: italic;
+    font-weight: 900;
     margin: 0px 0px 20px 60px;
 }

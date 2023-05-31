@@ -1,29 +1,38 @@
+ /* mobile용 css */
+ /* index.css와 동일한 주석은 생략한다. */
+ /* 모바일에서의 가독성을 위해 요소들의 크기를 늘렸다. */
+
 .card-body {
     padding: 0px 18px 0px 18px;
 }
 .cardtitle{
     font-size: 40px;
+     /* 카드 제목 폰트 사이즈를 늘렸다. */
 }
 .overview {
     font-size: 30px;
     font-style: italic;
+     /* 줄거리 폰트 사이즈를 늘렸다. */
 }
 
 .vote_average {
     font-size: 30px;
+     /* 평점 폰트 사이즈를 늘렸다. */
 }
 
 .card {
     width: 500px;
     margin: 0px 8px 6px 8px;
-
+ /* 카드 넓이를 늘렸다. */
 }
+
 
 .cards {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+     /* flex-direction: column; 을 통해 카드를 세로로 붙인다. */
 }
 
 .poster_path {
@@ -112,6 +121,8 @@
     color : rgb(115, 0, 23);
     background-color: white;
     margin: 0px 0px 0px 10px;
+     /* 버튼 크기를 늘렸다. */
+
 }
 
 #lovebtn:hover{
@@ -122,10 +133,13 @@
     color : red;
     background-color: white;
     margin: 0px 0px 0px 10px;
+    /* 버튼 크기를 늘렸다. */
 }
 
 .love{
     font-style: italic;
+    font-weight: 900;
     font-size:30px;
     margin: 0px 0px 20px 60px;
+    /* 폰트 사이즈를 늘렸다. */
 }
