@@ -1,6 +1,5 @@
 let m = new Map()
 function load() {
-
     const options = {
         method: 'GET',
         headers: {
@@ -24,11 +23,10 @@ function load() {
                 rankarray.push(id)
                 let rank = rankarray.indexOf(id) + 1
                 let love = m.get(id)
-                if (!love) { love = 0 }  
+                if (!love){love = 0}
                 let temp =
-
                     ` <div class = "card">
-                    <button id="lovebtn" onclick="love(${id})" type="button">♥︎</button>
+                    <button id="lovebtn" onclick="love(${id}),load()" type="button">♥︎</button>
                 <p class="love">${love} times loved this movie</love>
                     <div class="card-body" onclick = 'alert("영화 ID : ${id}")' >
                     <img src="${poster_path}"
@@ -46,14 +44,10 @@ function load() {
 
         }
         )
-    document.getElementById("search")
-        .addEventListener("keyup", function (e) {
-            if (e.code === 'Enter') {
-                document.getElementById("searchbtn").click();
-            }
-        });
+  
 
 };
+
 
 function anime() {
     const options = {
@@ -79,9 +73,13 @@ function anime() {
                 let genre = a['genre_ids']
                 if (genre.includes(16)) { rankarray.push(id) }
                 let rank = rankarray.indexOf(id) + 1
+                let love = m.get(id)
+                if (!love){love = 0}
                 let temp =
 
                     ` <div class = "card">
+                    <button id="lovebtn" onclick="love(${id}),load()" type="button">♥︎</button>
+                <p class="love">${love} times loved this movie</love>
                     <div class="card-body" onclick = 'alert("영화 ID : ${id}")' >
                         <img src="${poster_path}"
                             class="poster_path">
@@ -102,4 +100,6 @@ function anime() {
         )
 
 }
+
+
 

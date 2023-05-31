@@ -13,7 +13,7 @@ function search() {
 
             let rows = data['results']
             document.getElementById("cards").innerHTML = ""
-            let searchString = document.querySelector("#search").value
+            
             let upperSearch = searchString.toUpperCase()
             let noarray = []
             for (i = 0; i < rows.length; i++) {
@@ -25,9 +25,7 @@ function search() {
             if(filteredtitlearray.length==0){
                 alert("찾으시는 영화가 없습니다!")
             }
-            if (searchString == false) {
-                    alert("검색어를 입력하세요!")
-                }
+            
                 
             rows.forEach((a) => {
                 let title = a['title']
@@ -36,9 +34,14 @@ function search() {
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 let id = a['id']
+                let love = m.get(id)
+                if (!love) { love = 0 }  
 
                 let temp =
-                    `<div class="card" onclick = 'alert("영화 ID : ${id}")'>
+                    `<div class = "card">
+                    <button id="lovebtn" onclick="love(${id}),load()" type="button">♥︎</button>
+                <p class="love">${love} times loved this movie</love>
+                    <div class="card" onclick = 'alert("영화 ID : ${id}")'>
                     <img src="${poster_path}"
                         class="poster_path">
                                 <div class="card-body">
@@ -55,6 +58,9 @@ function search() {
 
         }
         )
-
+        let searchString = document.querySelector("#search").value
+        if (searchString == false) {
+            alert("검색어를 입력하세요!")
+        }
 
 }
