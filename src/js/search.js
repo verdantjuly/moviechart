@@ -36,7 +36,6 @@ function search() {
                 let id = a['id']
                 let love = m.get(id)
                 if (!love) { love = 0 }  
-
                 let temp =
                     `<div class = "card">
                     <button id="lovebtn" onclick="love(${id}),load()" type="button">♥︎</button>
@@ -50,6 +49,7 @@ function search() {
                                     <p class="overview">${overview}</p>
                             </div>
                     </div>`
+                
                 if (uppperTitle.includes(upperSearch)) {
                     document.getElementById("cards").insertAdjacentHTML('beforeend', temp);
                 }
