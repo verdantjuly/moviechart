@@ -41,7 +41,7 @@ function search() {
                     `<div class = "card">
                     <button id="lovebtn" onclick="love(${id}),load()" type="button">♥︎</button>
                 <p class="love">${love} times loved this movie</love>
-                    <div class="card" onclick = 'alert("영화 ID : ${id}")'>
+                    <div class="card-body" onclick = 'alert("영화 ID : ${id}")'>
                     <img src="${poster_path}"
                         class="poster_path">
                                 <div class="card-body">
