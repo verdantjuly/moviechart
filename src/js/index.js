@@ -126,7 +126,7 @@ function mychart() {
            
             for (i = 0; i < rows.length; i++) {
                 if (!love) { rows[i].love = 0 }
-                else {rows[i].love = m.get(rows[i].id)}
+                else {rows[i].love = m.get(rows[i]['id'])}
             }
             rows.sort(function compare(a, b) {
                 return b.love - a.love;
