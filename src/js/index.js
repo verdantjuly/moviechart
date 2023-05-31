@@ -133,9 +133,10 @@ function mychart() {
             
             let rows = data['results']          
             rankarray = []
-           
-            for (i = 0; i < rows.length; i++) { //0부터 rows의 length 전(19)까지 for문을 돌린다
-                if (!love) { rows[i].love = 0 } //love가 false이며녀 rows의 i번째 요소의 love는 0이다.
+            
+            for (i = 0; i < rows.length; i++) {//0부터 rows의 length 전(19)까지 for문을 돌린다
+                let love = m.get(rows[i]['id']) //love 변수에 id값에 해당하는 love 횟수를 담는다.
+                if (!love) { rows[i].love = 0 } //love가 false이면 rows의 i번째 요소의 love는 0이다.
                 else {rows[i].love = m.get(rows[i]['id'])} // 그외에는 rows의 i번째 요소의 love는 해당 id의 love 값이다.
                 // love를 누르지 않으면 false가 발생한다. 
                 // 즉, love를 안 누르면 love가 0이고
@@ -144,6 +145,7 @@ function mychart() {
             rows.sort(function compare(a, b) { // rows의 데이터를 love 즉, 하트 클릭 횟수 내림차순으로 정렬한다.
                 return b.love - a.love;
               });
+            console.log(rows)
             rows.forEach((a) => {
                 
                 let id = a['id']
