@@ -120,14 +120,18 @@ function mychart() {
         .then(response => response.json())
         .then(data => {
             document.getElementById("cards").innerHTML = ""
-            let rows = data['results']
-            sortm = [...m.entries()].sort((a, b) => b[1] - a[1])
-
-            for (i = 0; i < sortm.length; i++) {
-                rows[i].love = m.get(rows[i].id)
-            }
-            rows.sort((b, a) => a.love - b.love)
+            
+            let rows = data['results']          
             rankarray = []
+           
+            for (i = 0; i < rows.length; i++) {
+                if (!love) { rows[i].love = 0 }
+                else {rows[i].love = m.get(rows[i].id)}
+            }
+            rows.sort(function compare(a, b) {
+                return b.love - a.love;
+              });
+            
             rows.forEach((a) => {
                 
                 let id = a['id']
@@ -136,11 +140,9 @@ function mychart() {
                 let overview = a['overview']
                 let vote_average = a['vote_average']
                 let love = m.get(id)
+                if(love>0){
                 rankarray.push(id)
-                rank = rankarray.indexOf(id) + 1
-                if (!love) { love = 0 }
-
-
+                rank = rankarray.indexOf(id) + 1}
 
                 let temp =
                     ` <div class = "card">
@@ -159,7 +161,7 @@ function mychart() {
 
                 if (love > 0) { document.getElementById("cards").insertAdjacentHTML('beforeend', temp) }
             })
-
+            
         }
         )
 
