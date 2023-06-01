@@ -143,3 +143,10 @@
     margin: 0px 0px 20px 60px;
     /* 폰트 사이즈를 늘렸다. */
 }
+.vote_average{
+    font-weight: 900;
+}
+.showpopularity{
+    font-style: italic;
+    font-weight: 600;
+}
