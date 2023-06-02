@@ -1,6 +1,11 @@
 
+let memoinput
+
 // 전역변수 m에 새 Map을 담아보자.
 let m = new Map() 
+
+// 전역변수 memo에 새 Map을 담아보자.
+let memo = new Map() 
 
 // 전역변수 movies에  배열을 세팅하자. 담길 내용은 rows + love이다. 
 let movies = [] 
@@ -45,7 +50,7 @@ function load() {
             if (!movies[0]) { 
 
                 //movies에 rows를 복제한 것에 love:0을 movies 전체에 추가해 준다.
-                movies = rows.map(function movielove(movie) { return { ...movie, love: 0 } })
+                movies = rows.map(function movielove(movie) { return { ...movie, love: 0} })
             }
             
             // 그 외의 경우, 즉 movies[0] 이 존재하면
@@ -152,24 +157,31 @@ function load() {
                 
                 // 만약 love가 false이면 love에 0을 담는다.
                 if (!love) { love = 0 } 
-
+                memoinput = memo.get(id)
+                if (!memoinput) { memoinput = ""} 
+       
                 // 백틱 안에 카드 내용을 작성한다. 이게 하나의 카드 양식이다.
                 let temp = 
                     ` <div class = "card">
-                    <button id="lovebtn" onclick="love(${id}),load()" type="button">♥︎</button> 
-                <p class="love">${love} times loved this movie</p> 
-                    <div class="card-body" onclick = 'alert("영화 ID : ${id}")' > 
-                    <img src="${poster_path}"
+                        <button id="lovebtn" onclick="love(${id}),load()" type="button">♥︎</button>
+                        <p class="love">${love} times loved this movie</p>  
+                        <div class="card-body" onclick = 'alert("영화 ID : ${id}")' > 
+                        <img src="${poster_path}"
                         class="poster_path">
                                 <div class="card-body">
                                     <p class = "rank"> ${rank} </p>
                                     <h4 class="cardtitle">${title}</h4>
                                     <p class = "vote_average">★ ${vote_average}</p>
                                     <p class="showpopularity">popularity : ${showpopularity}</p>
-                                    <p class="overview">${overview}</p>
-                                    
+                                    <p class="overview">${overview}</p>    
+                                 </div>
                             </div>
-                    </div>`
+                            <div class = "memo">
+                            <input id="memo${id}" class="memobox" placeholder="short memo" autocomplete="off" >
+                            <button id="memobtn" onclick="memolist(${id}),load()" type="button">memo</button> 
+                            <p class = "memoinput"> ${memoinput} </p>
+                            </div> 
+                        <div>`
 
                 // 하트 버튼을 누르면 love(id)와 load()가 연쇄적으로 작동한다. 
                 // love(id)로 클릭 수를 저장하고 load로 화면을 다시 띄워 표시한다.
@@ -247,22 +259,29 @@ function anime() {
         
         // 만약 love가 false이면 love에 0을 담는다.
         if (!love) { love = 0 } 
-
+        memoinput = memo.get(id)
+        if (!memoinput) { memoinput = ""} 
         let temp = 
-            ` <div class = "card">
-                <button id="lovebtn" onclick="love(${id}),anime()" type="button">♥︎</button> 
-                <p class="love">${love} times loved this movie</p> 
-                <div class="card-body" onclick = 'alert("영화 ID : ${id}")' > 
-                    <img src="${poster_path}" class="poster_path">
+        ` <div class = "card">
+            <button id="lovebtn" onclick="love(${id}),anime()" type="button">♥︎</button>
+            <p class="love">${love} times loved this movie</p>  
+            <div class="card-body" onclick = 'alert("영화 ID : ${id}")' > 
+            <img src="${poster_path}"
+            class="poster_path">
                     <div class="card-body">
                         <p class = "rank"> ${rank} </p>
                         <h4 class="cardtitle">${title}</h4>
                         <p class = "vote_average">★ ${vote_average}</p>
                         <p class="showpopularity">popularity : ${showpopularity}</p>
-                        <p class="overview">${overview}</p>
-                    </div> 
+                        <p class="overview">${overview}</p>    
+                     </div>
                 </div>
-            </div>`
+                <div class = "memo">
+                <input id="memo${id}" class="memobox" placeholder="short memo" autocomplete="off" >
+                <button id="memobtn" onclick="memolist(${id}),anime()" type="button">memo</button> 
+                <p class = "memoinput"> ${memoinput} </p>
+                </div> 
+            <div>`
         // 하트 버튼을 누르면 love(id)와 anime()가 연쇄적으로 작동한다. 
         // love(id)로 클릭 수를 저장하고 load로 화면을 다시 띄워 표시한다.
 
@@ -319,28 +338,34 @@ function mychart() {
         let vote_average = a['vote_average'] 
         let showpopularity = a['showpopularity'] 
         let love = a['love']
-
+        memoinput = memo.get(id)
+        if (!memoinput) { memoinput = ""} 
         //rankarray 에 하트를 누른 것만 모은다.
         if (love > 0) { rankarray.push(id) } 
         rank = rankarray.indexOf(id) + 1
     
         if (!love) { love = 0 } 
         let temp = 
-            ` <div class = "card">
-             <button id="lovebtn" onclick="love(${id}),mychart()" type="button">♥︎</button> 
-         <p class="love">${love} times loved this movie</p> 
-             <div class="card-body" onclick = 'alert("영화 ID : ${id}")' > 
-             <img src="${poster_path}"
-                 class="poster_path">
-                         <div class="card-body">
-                             <p class = "rank"> ${rank} </p>
-                             <h4 class="cardtitle">${title}</h4>
-                             <p class = "vote_average">★ ${vote_average}</p>
-                             <p class="showpopularity">popularity : ${showpopularity}</p>
-                             <p class="overview">${overview}</p>
-                             
+        ` <div class = "card">
+            <button id="lovebtn" onclick="love(${id}),mychart()" type="button">♥︎</button>
+            <p class="love">${love} times loved this movie</p>  
+            <div class="card-body" onclick = 'alert("영화 ID : ${id}")' > 
+            <img src="${poster_path}"
+            class="poster_path">
+                    <div class="card-body">
+                        <p class = "rank"> ${rank} </p>
+                        <h4 class="cardtitle">${title}</h4>
+                        <p class = "vote_average">★ ${vote_average}</p>
+                        <p class="showpopularity">popularity : ${showpopularity}</p>
+                        <p class="overview">${overview}</p>    
                      </div>
-             </div>`
+                </div>
+                <div class = "memo">
+                <input id="memo${id}" class="memobox" placeholder="short memo" autocomplete="off" >
+                <button id="memobtn" onclick="memolist(${id}),mychart()" type="button">memo</button> 
+                <p class = "memoinput"> ${memoinput} </p>
+                </div> 
+            <div>`
         //하트 버튼을 누르면 love(id)와 mychart()가 연쇄적으로 작동한다. 
         //love(id)로 클릭 수를 저장하고 load로 화면을 다시 띄워 표시한다.
       
