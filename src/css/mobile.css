@@ -6,33 +6,40 @@
     padding: 0px 18px 0px 18px;
 }
 .cardtitle{
+    /* 카드 제목 폰트 사이즈를 늘렸다. */
     font-size: 40px;
-     /* 카드 제목 폰트 사이즈를 늘렸다. */
+     
 }
 .overview {
+     /* 줄거리 폰트 사이즈를 늘렸다. */
     font-size: 30px;
     font-style: italic;
-     /* 줄거리 폰트 사이즈를 늘렸다. */
+    
 }
 
 .vote_average {
-    font-size: 30px;
      /* 평점 폰트 사이즈를 늘렸다. */
+    font-size: 30px;
+    
 }
 
 .card {
+     /* 카드 넓이를 늘렸다. */
     width: 500px;
     margin: 0px 8px 6px 8px;
- /* 카드 넓이를 늘렸다. */
+
 }
 
 
 .cards {
     display: flex;
+
+    /* flex-direction: column; 을 통해 카드를 세로로 붙인다. */
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
-     /* flex-direction: column; 을 통해 카드를 세로로 붙인다. */
+     
 }
 
 .poster_path {
@@ -114,6 +121,7 @@
     border : solid 2px black;
   }
   #lovebtn {
+    /* 버튼 크기를 늘렸다. */
     width: 100px;
     height: 100px;
     border: none;
@@ -121,11 +129,12 @@
     color : rgb(115, 0, 23);
     background-color: white;
     margin: 0px 0px 0px 10px;
-     /* 버튼 크기를 늘렸다. */
+     
 
 }
 
 #lovebtn:hover{
+    /* 버튼 크기를 늘렸다. */
     width: 100px;
     height: 100px;
     border: none;
@@ -133,15 +142,18 @@
     color : red;
     background-color: white;
     margin: 0px 0px 0px 10px;
-    /* 버튼 크기를 늘렸다. */
+    
 }
 
 .love{
     font-style: italic;
     font-weight: 900;
-    font-size:30px;
-    margin: 0px 0px 20px 60px;
+
     /* 폰트 사이즈를 늘렸다. */
+    font-size:30px;
+
+    margin: 0px 0px 20px 60px;
+    
 }
 .vote_average{
     font-weight: 900;
