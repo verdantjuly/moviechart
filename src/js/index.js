@@ -157,7 +157,11 @@ function load() {
                 
                 // 만약 love가 false이면 love에 0을 담는다.
                 if (!love) { love = 0 } 
+
+                // 전역변수 memoinput에 id를 키로 갖는 memo객체의 value를 넣어주자.
                 memoinput = memo.get(id)
+
+                // memoinput이 false 이면 "" 빈 문자열을 넣어준다.
                 if (!memoinput) { memoinput = ""} 
        
                 // 백틱 안에 카드 내용을 작성한다. 이게 하나의 카드 양식이다.
@@ -183,8 +187,14 @@ function load() {
                             </div> 
                         <div>`
 
+                // 하트
                 // 하트 버튼을 누르면 love(id)와 load()가 연쇄적으로 작동한다. 
                 // love(id)로 클릭 수를 저장하고 load로 화면을 다시 띄워 표시한다.
+
+                // 메모
+                // 메모 버튼을 누르면 memolist(id)와 load()가 연쇄적으로 작동한다.
+                // memoinput 으로 memo 객체의 value를 받아서 표시해 준다.
+
                 // 카드를 클릭하면 영화 ID를 alert로 알려 준다.
                 // ${}를 이용하여 백틱 안에 변수들을 차곡차곡 넣어 준다.
 
