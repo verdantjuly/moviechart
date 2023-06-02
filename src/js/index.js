@@ -1,5 +1,5 @@
 let m = new Map() // 전역변수 m에 새 Map을 담아보자.
-let movies = []
+let movies = [] // 전역변수 movies에  배열을 세팅하자. 담길 내용은 rows + love이다. 
 let rankarray = [] //전역변수 rankarray에 빈 배열을 세팅하자. 영화 순위를 담는 배열이다.
 let rank = 0 //전역변수 rank를 0으로 초기화하자. 영화 순위이다.
 
@@ -29,8 +29,8 @@ function load() { //load() 함수 : h1 Moviechart 타이틀과 allchart 버튼�
             else { //그 외의 경우, 즉 movies[0] 이 존재하면 
                 // (movies에 요소를 생성하는 위 식에 의해 movies는 [0]이 있으면 나머지가 다 있는 것이다.)
                 for (i = 0; i < movies.length; i++) {
-                    movies[i].love = m.get(movies[i]['id']) //movies의 i번째 배열의 love를 업데이트 해 준다.
-                    if (!movies[i].love) { movies[i].love = 0 } //love가 false 즉 undefined 하면 love는 0을 넣어준다.
+                    movies[i].love = m.get(movies[i]['id']) //movies의 i번째 배열의 love를 업데이트 해 준다. 이때 love가 없는 경우 undefined가 발생한다.
+                    if (!movies[i].love) { movies[i].love = 0 } //love가 false 즉 undefined 하면 love는 다시 0을 넣어준다.
                 }
             }
 
@@ -75,6 +75,7 @@ function load() { //load() 함수 : h1 Moviechart 타이틀과 allchart 버튼�
 
             //mychart를 갔다가 다시 allchart로 돌아오는 경우 movies가 love 순으로 sort 된다.
             // 그러므로 vote_average 기준으로 다시 sort 해 준다.
+            // 이때 vote_average가 같으면 알파벳 순으로 정렬한다.
 
             movies.forEach((a) => {  //movies를 기준으로 forEach 반복문을 돌린다.
                 let id = a['id'] // 영화 id
@@ -140,11 +141,19 @@ function anime() { //anime 함수이다. 애니메이션 차트를 소환한다.
         if (!movies[i].love) { movies[i].love = 0 } //love가 false 즉 undefined 하면 love는 0을 넣어준다.
     }
 
-    movies.sort(function compare(a, b) {
-        return b.vote_average - a.vote_average;
-        //mychart를 갔다가 다시 anime chart로 돌아오는 경우 movies가 love 순으로 sort 된다.
-        // 그러므로 vote_average 기준으로 다시 sort 해 준다.
-    });
+    movies.sort(function(a, b) {
+        if (b.vote_average === a.vote_average) { //평점이 같으면
+            if (a.title < b.title) { //제목을 비교하여 알파벳순으로 sort 한다.
+                return -1;
+            } else if (a.title > b.title) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else { //이 외에, 즉 평점이 다르면 평점순으로 sort 한다.
+            return b.vote_average - a.vote_average;
+        }})
+
     movies.forEach((a) => {  //movies를 기준으로 forEach 반복문을 돌린다.
         let id = a['id'] // 영화 id
         let title = a['title'] // 영화 제목
@@ -207,13 +216,18 @@ function mychart() {  // mychart 함수이다.
     }
 
     // movies의 데이터를 love 즉, 하트 클릭 횟수 내림차순으로 정렬한다.
-    movies.sort(function compare(a, b) {
-        return b.love - a.love;
-        // if(b.love>a.love){return -1}
-        // if(a.love>b.love){return 1}
-        // else {return 0}
-    });
-    console.log(movies)
+    movies.sort(function(a, b) {
+        if (b.love === a.love) { //love가 같으면
+            if (a.title < b.title) { //제목을 비교하여 알파벳순으로 sort 한다.
+                return -1;
+            } else if (a.title > b.title) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else { //이 외에, 즉 love 가 다르면 love 순으로 sort 한다.
+            return b.love - a.love;
+        }})
 
     movies.forEach((a) => {  //movies를 기준으로 forEach 반복문을 돌린다.
         let id = a['id'] // 영화 id
@@ -224,7 +238,6 @@ function mychart() {  // mychart 함수이다.
         let overview = a['overview'] // 영화 줄거리
         let vote_average = a['vote_average'] // 평점
         let showpopularity = a['showpopularity'] //인기도
-        let genre = a['genre_ids']
         let love = a['love']
         // love는 movies의 love이다.
 
