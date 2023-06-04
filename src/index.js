@@ -33,6 +33,7 @@ function detailpage() {
 
 function load() {
 
+
     const options = {
         method: 'GET',
         headers: {
@@ -49,7 +50,7 @@ function load() {
             rows = data['results']
 
 
-            movies = rows.map(function movielove(movie) { return { ...movie } })
+            movies = rows.map(movie => ({ ...movie }))
 
             for (let i = 0; i < movies.length; i++) {
                 let movieid = movies[i]['id']
@@ -179,8 +180,6 @@ function my() {
                 <p class="alltime" id="${movie.id}">${((localStorage.getItem(movie.id)).length) - 1} people loved this movie</p>   
             </div>
             <div class = "buttons">
-            <button class = "lovebtn" id="${movie.id}" type="button">♥︎</button>
-            <button class="deletelove" id="${movie.id} type="button">⟲</button>
             <button class="details" id="${movie.id} type="button">Details</button>
             </div>
             </div>`)

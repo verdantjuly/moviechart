@@ -24,7 +24,7 @@ function detailload() {
         .then(response => response.json())
         .then(data => {
             let rows = data['results']
-            movies = rows.map(function movielove(movie) { return { ...movie } })
+            movies = rows.map((movie) => { return { ...movie } })
 
             detailcards.innerHTML = movies
                 .map(function append(movie) {
