@@ -12,7 +12,3 @@ export function lovefunc(id) {
     } else { m.set(id, 'b') }
 
 }
-
-export function dellove(delid) {
-    localStorage.removeItem(delid)
-}

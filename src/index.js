@@ -1,4 +1,4 @@
-import { lovefunc, dellove } from "./lovefunc.js";
+import { lovefunc } from "./lovefunc.js";
 import { searchfunc } from "./search.js";
 import { desktopSwitch, mobileSwitch } from "./switch.js";
 
@@ -123,9 +123,9 @@ export function clickAllChart({ target }) {
     if (target === cards) return;
 
     if (target.matches(".lovebtn")) {
-        lovefunc(target.id);
-        load();
-        location.reload();
+        lovefunc(target.id)
+        load()
+        location.reload()
     }
     else if (target.matches(".details")) {
         localStorage.setItem('sendid', target.id)
