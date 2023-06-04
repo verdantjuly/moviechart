@@ -1,14 +1,12 @@
 import { lovefunc, dellove } from "./lovefunc.js";
 import { searchfunc } from "./search.js";
 import { desktopSwitch, mobileSwitch } from "./switch.js";
-import "./enter.js";
 
 export const cards = document.querySelector(".cards");
 export let m = new Map();
 export let movies = [];
 
 let rows = [];
-
 document.addEventListener("DOMContentLoaded", load);
 
 const home = document.getElementById("home");
@@ -28,6 +26,10 @@ mobilebtn.addEventListener("click", mobileSwitch);
 
 const desktopbtn = document.getElementById("desktopbtn");
 desktopbtn.addEventListener("click", desktopSwitch);
+
+function detailpage() {
+    location.href = "./detail.html";
+}
 
 function load() {
 
@@ -88,27 +90,34 @@ function load() {
 
             cards.innerHTML = movies
                 .map(function append(movie) {
-                    return (`<div class= "card">
-                    <div class = "buttons">
-                    <button class = "lovebtn" id="${movie.id}" type="button">♥︎</button>
-                    <button class="deletelove" id="${movie.id} type="button">⟲</button>
-                    </div>
+                    return (`<div class= "card">      
                     <div class="cardbody" id="${movie.id}" >
-                    <p class="alltime" id="${movie.id}">${((localStorage.getItem(movie.id)).length) - 1} times loved this movie</p>  
                     <img class="allimg" id="${movie.id}"  src="https://image.tmdb.org/t/p/w500${movie.poster_path}"></img>
+                    <div class = rankvote>
                     <p class="allrank" id="${movie.id}" >${movies.indexOf(movie) + 1}</p>
                     <p class="allvote" id="${movie.id}"  >★ ${movie.vote_average}</p>  
-                    <h4 class="alltitle" id="${movie.id}" >${movie.title}</h4>
-                            
+                    </div>
+                    <h4 class="alltitle" id="${movie.id}" >${movie.title}</h4> 
+                    <p class="alltime" id="${movie.id}">${((localStorage.getItem(movie.id)).length) - 1} people loved this movie</p>   
+                </div>
+                <div class = "buttons">
+                <button class = "lovebtn" id="${movie.id}" type="button">♥︎</button>
+                <button class="details" id="${movie.id}" type="button">Details</button>
                 </div>
                 </div>`)
                 })
                 .join("")
             cards.addEventListener("click", clickAllChart)
         })
+    document.getElementById("search")
+        .addEventListener("keyup", function (e) {
+            if (e.code === 'Enter') {
+                document.getElementById("searchbtn").click();
+            }
+        })
 };
 
-function clickAllChart({ target }) {
+export function clickAllChart({ target }) {
 
     if (target === cards) return;
 
@@ -117,10 +126,9 @@ function clickAllChart({ target }) {
         load();
         location.reload();
     }
-    else if (target.matches(".deletelove")) {
-        dellove(parseInt(target.id));
-        load();
-        location.reload();
+    else if (target.matches(".details")) {
+        localStorage.setItem('sendid', target.id)
+        detailpage()
     }
     else if (target.matches(".cardbody, .alltime, .allimg, .alltitle, .allvote")) {
         alert(`영화 ID : ${target.id}`);
@@ -160,14 +168,20 @@ function my() {
     cards.innerHTML = movies
         .map(function append(movie) {
             if ((localStorage.getItem(movie.id)).length > 1) {
-                return (`<div class= "card">
+                return (`<div class= "card">      
                 <div class="cardbody" id="${movie.id}" >
-                <p class="alltime" id="${movie.id}" >${((localStorage.getItem(movie.id)).length) - 1} times loved this movie</p>  
-                <img class="allimg" id="${movie.id}"   src="https://image.tmdb.org/t/p/w500${movie.poster_path}"></img>
-                <p class="allrank"  id="${movie.id}" >${movies.indexOf(movie) + 1}</p>
-                <p class="allvote" id="${movie.id}" >★ ${movie.vote_average}</p>  
-                <h4 class="alltitle"  id="${movie.id}" >${movie.title}</h4>
-                        
+                <img class="allimg" id="${movie.id}"  src="https://image.tmdb.org/t/p/w500${movie.poster_path}"></img>
+                <div class = rankvote>
+                <p class="allrank" id="${movie.id}" >${movies.indexOf(movie) + 1}</p>
+                <p class="allvote" id="${movie.id}"  >★ ${movie.vote_average}</p>  
+                </div>
+                <h4 class="alltitle" id="${movie.id}" >${movie.title}</h4> 
+                <p class="alltime" id="${movie.id}">${((localStorage.getItem(movie.id)).length) - 1} people loved this movie</p>   
+            </div>
+            <div class = "buttons">
+            <button class = "lovebtn" id="${movie.id}" type="button">♥︎</button>
+            <button class="deletelove" id="${movie.id} type="button">⟲</button>
+            <button class="details" id="${movie.id} type="button">Details</button>
             </div>
             </div>`)
             }

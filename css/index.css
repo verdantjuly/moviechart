@@ -1,6 +1,6 @@
 .cardbody {
-
-    padding: 0px 18px 0px 18px;
+    height: 590px;
+    margin: 0px 25px 0px 25px
 }
 
 
@@ -14,30 +14,22 @@
 }
 
 .card {
-
     width: 300px;
-
-    margin: 0px 8px 56px 8px;
+    margin: 10px 10px 50px 10px;
 }
 
 .cards {
 
     display: flex;
-
-
     align-content: flex-start;
-
-
     flex-wrap: wrap;
 
 }
 
 .allimg {
 
-
     border-radius: 10%;
-
-    width: 300px;
+    width: 250px;
 }
 
 .header {
@@ -169,33 +161,46 @@
 .alltime {
     font-style: italic;
     font-weight: 900;
-    margin: 0px 0px 20px 60px;
 }
 
 .allvote {
+    width: 300px;
+    margin: 55px 10px 0px 0px;
     font-weight: 900;
     font-size: 20px;
+    text-align: right;
 }
 
-.deletelove {
-    width: 30px;
-    height: 30px;
-    border: none;
-    font-size: 30px;
-    color: black;
-    background-color: white;
-}
-
-.deletelove:hover {
-    width: 30px;
-    height: 30px;
-    border: none;
-    font-size: 30px;
-    color: green;
-    background-color: white;
-}
 
 .buttons {
-    text-align: center;
-    margin-bottom: 10px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.rankvote {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+}
+
+.details {
+    width: 70px;
+    height: 30px;
+    font-size: 15px;
+    font-style: italic;
+    color: white;
+    background-color: black;
+    border: 4px solid black;
+    border-radius: 10%;
+}
+
+.details:hover {
+    width: 70px;
+    height: 30px;
+    font-size: 15px;
+    font-style: italic;
+    color: black;
+    background-color: white;
+    border: 4px solid black;
+    border-radius: 10%;
 }

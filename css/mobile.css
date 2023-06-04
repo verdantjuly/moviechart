@@ -3,7 +3,6 @@
 }
 
 .alltitle {
-
     font-size: 40px;
 
 }
@@ -19,16 +18,14 @@
 .card {
 
     width: 500px;
-    margin: 30px 8px 6px 8px;
+    margin: 30px 8px 200px 8px;
 
 }
 
 
 .cards {
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
 
@@ -133,7 +130,7 @@
     font-size: 40px;
     width: 250px;
     height: 70px;
-    border: solid 2px black;
+    border: solid 4px black;
 }
 
 
@@ -142,7 +139,7 @@
     font-size: 40px;
     width: 250px;
     height: 70px;
-    border: solid 2px black;
+    border: solid 4px black;
 }
 
 .lovebtn {
@@ -150,7 +147,7 @@
     width: 100px;
     height: 100px;
     border: none;
-    font-size: 90px;
+    font-size: 80px;
     color: rgb(115, 0, 23);
     background-color: white;
 
@@ -162,7 +159,7 @@
     width: 100px;
     height: 100px;
     border: none;
-    font-size: 90px;
+    font-size: 80px;
     color: red;
     background-color: white;
 
@@ -172,11 +169,7 @@
 .alltime {
     font-style: italic;
     font-weight: 900;
-
-
-    font-size: 30px;
-
-    margin: 0px 0px 20px 60px;
+    font-size: 40px;
 
 }
 
@@ -184,22 +177,24 @@
     font-weight: 900;
 }
 
-.deletelove {
-    width: 100px;
-    height: 100px;
-    border: none;
-    font-size: 90px;
-    color: black;
-    background-color: white;
-
+.details {
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    font-style: italic;
+    color: white;
+    background-color: black;
+    border: 4px solid black;
+    border-radius: 10%;
 }
 
-.deletelove:hover {
-    width: 100px;
-    height: 100px;
-    border: none;
-    font-size: 90px;
+.details:hover {
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    font-style: italic;
     color: black;
     background-color: white;
-
+    border: 4px solid black;
+    border-radius: 10%;
 }

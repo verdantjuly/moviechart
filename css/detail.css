@@ -1,0 +1,112 @@
+.header {
+    margin: 20px 0px 0px 40px;
+}
+
+#detailhome {
+    width: 130px;
+    height: 40px;
+    font-size: 20px;
+    font-style: italic;
+    color: white;
+    background-color: black;
+    border: 4px solid black;
+    border-radius: 10%;
+
+
+}
+
+
+#detailhome:hover,
+#detailhome:focus {
+    width: 130px;
+    height: 40px;
+    font-size: 20px;
+    font-style: italic;
+    color: black;
+    background-color: white;
+    border: 4px solid black;
+    border-radius: 10%;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.allimg {
+    height: 500px;
+    margin: 40px 40px 40px 40px;
+}
+
+.cardbody {
+    padding: 40px 0px 0px 0px;
+    width: 700px;
+}
+
+.commentbox {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#comment {
+    width: 300px;
+    height: 30px;
+    margin-right: 10px;
+    font-style: italic;
+}
+
+#writter {
+    width: 100px;
+    height: 30px;
+    margin-right: 10px;
+    font-style: italic;
+}
+
+#password {
+    width: 100px;
+    font-style: italic;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.save {
+    height: 35px;
+    margin-right: 10px;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.edit {
+    height: 35px;
+    margin-right: 10px;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.delete {
+    height: 35px;
+    margin-right: 10px;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.bigcommentbox {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#review {
+    font-style: italic;
+    font-size: 20px;
+}
+
+#reviewcontent {
+    font-size: 15px;
+    font-style: italic;
+}
