@@ -11,7 +11,6 @@ const writter1 = document.querySelector("#writter1");
 const writter2 = document.querySelector("#writter2");
 const writter3 = document.querySelector("#writter3");
 let writterarray = []
-let writterarrayjson = []
 detailhome.addEventListener("click", gohome);
 function gohome() {
     location.href = "./index.html";
@@ -32,6 +31,7 @@ function detailload() {
             let today = new Date();
             let release = movie.release_date
             let releasedate = new Date(release);
+            let lefttime = Math.round((releasedate.getTime() - today.getTime()) / 86400000)
 
             if (movie.id == sendid && today >= releasedate) {
                 title.innerHTML = `${movie.title}`
@@ -73,7 +73,7 @@ function detailload() {
                         <p class="allvote" id="${movie.id}" >★ ${movie.vote_average}</p>
             }</p >  
                         <p class="overview" id="${movie.id}" >${movie.overview}</p>  <br>
-                        <p class="unrelease" >해당 영화는 아직 개봉되지 않았습니다. <br><br>관람 후에 후기를 남겨 주세요.</p>  
+                        <p class="unrelease" >해당 영화는 아직 개봉되지 않았습니다. <br>${lefttime}일 후에 개봉됩니다.<br>관람 후에 후기를 남겨 주세요.</p>  
                  
                   </div >
 
