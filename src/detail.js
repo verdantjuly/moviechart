@@ -93,6 +93,10 @@ reviewcontent1.innerHTML = localStorage.getItem(writtersarray[writtersarray.leng
 reviewcontent2.innerHTML = localStorage.getItem(writtersarray[writtersarray.length - 2] + sendid + "input")
 reviewcontent3.innerHTML = localStorage.getItem(writtersarray[writtersarray.length - 3] + sendid + "input")
 
+if (writtersarray[writtersarray.length - 1] == undefined) { writter1.innerHTML = "" }
+if (writtersarray[writtersarray.length - 2] == undefined) { writter2.innerHTML = "" }
+if (writtersarray[writtersarray.length - 3] == undefined) { writter3.innerHTML = "" }
+
 function clickDetails({ target }) {
 
     let inputcomment = document.querySelector("#comment").value
@@ -118,15 +122,15 @@ function clickDetails({ target }) {
         else if (passwordcomment !== localStorage.getItem(writtercomment + sendid + "pw")) { alert("비밀번호가 일치하지 않습니다.") }
     }
     else if (target.matches(".delete")) {
-        if (passwordcomment == localStorage.getItem('admin' + sendid) && (writtercomment == 'admin' + sendid)) {
+        if (passwordcomment == localStorage.getItem(writtercomment + sendid + "pw")) {
             localStorage.removeItem(writtercomment + sendid + "input");
             localStorage.removeItem(writtercomment + sendid + "pw");
-            localStorage.removeItem(sendid + 'writters');
-            writtersarray = []
+            let newwritters = (localStorage.getItem(sendid + 'writters')).replace("|" + writtercomment, "")
+            localStorage.setItem(sendid + 'writters', newwritters)
             location.reload()
 
         }
-        else if (passwordcomment !== localStorage.getItem('admin' + sendid) || (writtercomment == 'admin' + sendid)) { alert("정보가 일치하지 않습니다. 운영자만 삭제할 수 있습니다.") }
+        else if (passwordcomment !== localStorage.getItem(writtercomment + sendid + "pw")) { alert("비밀번호가 일치하지 않습니다.") }
     }
 
 }
