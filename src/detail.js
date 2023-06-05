@@ -32,7 +32,7 @@ function detailload() {
             let release = movie.release_date
             let releasedate = new Date(release);
             let lefttime = Math.round((releasedate.getTime() - today.getTime()) / 86400000)
-
+            if (lefttime == 0) { lefttime = 1 }
             if (movie.id == sendid && today >= releasedate) {
                 title.innerHTML = `${movie.title}`
                 detailcards.innerHTML =
