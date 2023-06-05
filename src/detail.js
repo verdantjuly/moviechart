@@ -1,4 +1,7 @@
 let movies = []
+const movie = {}
+const apikey = '9119f549275a23ec65b54dfd6152a086'
+const title = document.querySelector("#title");
 const detailcards = document.querySelector(".detailcards");
 const detailhome = document.getElementById("detailhome");
 const reviewcontent1 = document.querySelector("#reviewcontent1");
@@ -9,53 +12,31 @@ const writter2 = document.querySelector("#writter2");
 const writter3 = document.querySelector("#writter3");
 let writterarray = []
 let writterarrayjson = []
-
 detailhome.addEventListener("click", gohome);
 function gohome() {
     location.href = "./index.html";
 }
 
-document.addEventListener("DOMContentLoaded", detailload);
 
 let sendid = localStorage.getItem('sendid')
 sendid = parseInt(sendid.replace(" type=", ""))
 
+document.addEventListener("DOMContentLoaded", detailload);
+
+
+
 function detailload() {
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MTE5ZjU0OTI3NWEyM2VjNjViNTRkZmQ2MTUyYTA4NiIsInN1YiI6IjY0NzA4YTllNzcwNzAwMDBhOTQ3ZDdmMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3W-E9KnuKEWvia4zXrXpCRKfHz9a5clH7RjrUwJD8iY'
-        }
-    };
-    fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
+    fetch(`https://api.themoviedb.org/3/movie/${sendid}?api_key=${apikey}`, { method: 'GET' })
         .then(response => response.json())
-        .then(data => {
-            let rows = data['results']
-            movies = rows.map((movie) => { return { ...movie } })
+        .then(movie => {
+            let today = new Date();
+            let release = movie.release_date
+            let releasedate = new Date(release);
 
-
-            detailcards.innerHTML = movies
-                .map(function append(movie) {
-                    if (movie.id == sendid) {
-
-                        // let commentview1 =
-                        //     let writterview1 =
-                        //         let commentview2 =
-                        //         let writterview2 =
-                        //         let commentview3 =
-                        //         let writterview3 = 
-
-                        // if (!commentview1) { commentview1 = "" }
-                        // if (!commentview2) { commentview2 = "" }
-                        // if (!commentview3) { commentview3 = "" }
-                        // if (!writterview1) { writterview1 = "" }
-                        // if (!writterview2) { writterview2 = "" }
-                        // if (!writterview3) { writterview3 = "" }
-
-                        return `
-                        
-                        
+            if (movie.id == sendid && today >= releasedate) {
+                title.innerHTML = `${movie.title}`
+                detailcards.innerHTML =
+                    `
                         <div class= "card">
                         
                         <img class="allimg" id="${movie.id}"   src="https://image.tmdb.org/t/p/w500${movie.poster_path}"></img>
@@ -64,8 +45,6 @@ function detailload() {
                         <p class="alltime" id="${movie.id}" >${((localStorage.getItem(movie.id)).length) - 1} people loved this movie</p>  
                         <p class="allvote" id="${movie.id}" >★ ${movie.vote_average}</p>  
                         <p class="overview" id="${movie.id}" >${movie.overview}</p>  
-                   
-                   
                    
                    <input id="comment" placeholder="please leave short review" autocomplete="off" autofocus></input>
                         <div class = "login">
@@ -81,14 +60,30 @@ function detailload() {
                   </div> 
            
                     `
-                    }
-                    detailcards.addEventListener("click", clickDetails)
-                }).join("")
+            }
+            if (movie.id == sendid && today < releasedate) {
+                detailcards.innerHTML =
+                    `
+                        <div class= "card">
+                        
+                        <img class="allimg" id="${movie.id}"   src="https://image.tmdb.org/t/p/w500${movie.poster_path}"></img>
+                        <div class="cardbody" id="${movie.id}" >
+                        <h1 class="alltitle"  id="${movie.id}" >${movie.title}</h1>
+                        <p class="alltime" id="${movie.id}" >${((localStorage.getItem(movie.id)).length) - 1} people loved this movie</p>  
+                        <p class="allvote" id="${movie.id}" >★ ${movie.vote_average}</p>
+            }</p >  
+                        <p class="overview" id="${movie.id}" >${movie.overview}</p>  <br>
+                        <p class="unrelease" >해당 영화는 아직 개봉되지 않았습니다. <br><br>관람 후에 후기를 남겨 주세요.</p>  
+                 
+                  </div >
 
-            console.log(writtersarray)
+                `
+            }
 
         })
 }
+detailcards.addEventListener("click", clickDetails)
+
 
 let writtersarray = (localStorage.getItem(sendid + 'writters')).split("|")
 writter1.innerHTML = writtersarray[writtersarray.length - 1]

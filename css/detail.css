@@ -170,3 +170,9 @@
     justify-content: flex-start;
 
 }
+
+.unrelease {
+    font-weight: 700;
+    color: darkblue;
+    font-style: italic;
+}
