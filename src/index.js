@@ -63,15 +63,15 @@ function load() {
             }
 
 
-            movies.sort(function (a, b) {
+            movies.sort(function (prev, next) {
 
 
-                if (b.vote_average === a.vote_average) {
+                if (next.vote_average === prev.vote_average) {
 
 
-                    if (a.title < b.title) {
+                    if (prev.title < next.title) {
                         return -1;
-                    } else if (a.title > b.title) {
+                    } else if (prev.title > next.title) {
                         return 1;
                     } else {
                         return 0;
@@ -79,7 +79,7 @@ function load() {
 
 
                 } else {
-                    return b.vote_average - a.vote_average;
+                    return next.vote_average - prev.vote_average;
                 }
             });
 
@@ -138,20 +138,20 @@ function loved() {
     document.getElementById("cards").innerHTML = ""
 
 
-    movies.sort(function (a, b) {
+    movies.sort(function (prev, next) {
 
-        if (b.love.length === a.love.length) {
+        if (next.love.length === prev.love.length) {
 
-            if (a.title < b.title) {
+            if (prev.title < next.title) {
                 return -1;
-            } else if (a.title > b.title) {
+            } else if (prev.title > next.title) {
                 return 1;
             } else {
                 return 0;
             }
 
         } else {
-            return b.love.length - a.love.length;
+            return next.love.length - prev.love.length;
         }
     })
 
