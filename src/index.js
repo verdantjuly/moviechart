@@ -19,7 +19,7 @@ const allchart = document.getElementById("allchart");
 allchart.addEventListener("click", load);
 
 const mychart = document.getElementById("mychart");
-mychart.addEventListener("click", my);
+mychart.addEventListener("click", loved);
 
 const mobilebtn = document.getElementById("mobilebtn");
 mobilebtn.addEventListener("click", mobileSwitch);
@@ -55,7 +55,7 @@ function load() {
             for (let i = 0; i < movies.length; i++) {
                 let movieid = movies[i]['id']
                 if (!(localStorage.getItem(movieid))) {
-                    localStorage.setItem(movieid, 'b');
+                    localStorage.setItem(movieid, '0');
                 }
                 else {
                     movies[i].love = localStorage.getItem(movieid)
@@ -94,7 +94,7 @@ function load() {
                     <p class="allvote" id="${movie.id}"  >★ ${movie.vote_average}</p>  
                     </div>
                     <h4 class="alltitle" id="${movie.id}" >${movie.title}</h4> 
-                    <p class="alltime" id="${movie.id}">${localStorage.getItem(movie.id).replace('b', "").length} people loved this movie</p>   
+                    <p class="alltime" id="${movie.id}">${localStorage.getItem(movie.id)} people loved this movie</p>   
                 </div>
                 <div class = "buttons">
                 <button class = "lovebtn" id="${movie.id}" type="button">♥︎</button>
@@ -118,7 +118,7 @@ export function clickAllChart({ target }) {
     if (target === cards) return;
 
     if (target.matches(".lovebtn")) {
-        localStorage.setItem(target.id, localStorage.getItem(target.id) + 'a')
+        localStorage.setItem(target.id, Number(localStorage.getItem(target.id)) + 1)
         load()
         location.reload()
     }
@@ -133,7 +133,7 @@ export function clickAllChart({ target }) {
 }
 
 
-function my() {
+function loved() {
 
     document.getElementById("cards").innerHTML = ""
 
@@ -167,7 +167,7 @@ function my() {
                 <p class="allvote" id="${movie.id}"  >★ ${movie.vote_average}</p>  
                 </div>
                 <h4 class="alltitle" id="${movie.id}" >${movie.title}</h4> 
-                <p class="alltime" id="${movie.id}">${localStorage.getItem(movie.id).replace('b', "").length} people loved this movie</p>   
+                <p class="alltime" id="${movie.id}">${localStorage.getItem(movie.id)} people loved this movie</p>   
             </div>
             <div class = "buttons">
             <button class="details" id="${movie.id} type="button">Details</button>
