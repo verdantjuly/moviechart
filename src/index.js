@@ -19,7 +19,7 @@ const allchart = document.getElementById("allchart");
 allchart.addEventListener("click", load);
 
 const mychart = document.getElementById("mychart");
-mychart.addEventListener("click", upOneLove);
+mychart.addEventListener("click", openlovedchart);
 
 const mobilebtn = document.getElementById("mobilebtn");
 mobilebtn.addEventListener("click", mobileSwitch);
@@ -133,7 +133,7 @@ export function clickAllChart({ target }) {
 }
 
 
-function upOneLove() {
+function openlovedchart() {
 
     document.getElementById("cards").innerHTML = ""
 
